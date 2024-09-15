@@ -1,0 +1,26 @@
+{
+	"prod": {
+		"host": "localhost",
+		"username": "root",
+		"password": "password",
+		"port": "27017",
+		"db": "test",
+		"options": {}
+	},
+	"dev": {
+		"host": "localhost",
+		"username": "root",
+		"password": "password",
+		"port": "27017",
+		"db": "test",
+		"options": {}
+	},
+	"test": {
+		"host": "localhost",
+		"username": "root",
+		"password": "password",
+		"port": "27017",
+		"db": "test",
+		"options": {}
+	}
+}
