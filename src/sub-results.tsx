@@ -1,5 +1,5 @@
 import React from 'react';
-import { Newline, Text } from 'ink';
+import { Box, Text } from 'ink';
 import { ObjectId } from 'mongodb';
 
 const toDisplay = (v: any) => {
@@ -13,16 +13,13 @@ const toDisplay = (v: any) => {
 };
 export const SubResults = (props: { result: object }) => {
 	return (
-		<Text>
-			<>
-				{Object.entries(props.result).map(([k, v]) => (
-					<Text key={k}>
-						<Text>{k}: </Text>
-						{toDisplay(v)}
-						<Newline />
-					</Text>
-				))}
-			</>
-		</Text>
+		<Box flexDirection="column">
+			{Object.entries(props.result).map(([k, v]) => (
+				<Box key={k} flexDirection="row">
+					<Text>{k}: </Text>
+					{toDisplay(v)}
+				</Box>
+			))}
+		</Box>
 	);
 };
