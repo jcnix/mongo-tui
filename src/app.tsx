@@ -27,7 +27,7 @@ export default function App() {
 	return db ? (
 		<>
 			<TextInput value={command} onChange={setCommand} onSubmit={onSubmit} />
-			<Results results={result} />
+			{result ? <Results results={result} /> : null}
 		</>
 	) : null;
 }

@@ -1,16 +1,18 @@
 import React from 'react';
-import { Box, Text } from 'ink';
+import { Box, Newline, Text } from 'ink';
 import { Document, WithId } from 'mongodb';
+import { SubResults } from './sub-results.js';
 
-export const Results = (props: { results?: WithId<Document>[] }) => {
+export const Results = (props: { results: WithId<Document>[] }) => {
 	return (
 		<Box>
-			<>
-				<Text>{'Results'}</Text>
-				{props.results?.map((result) => (
-					<Text key={result._id.toString()}>{JSON.stringify(result)}</Text>
+			<Text>
+				{'Results'}
+				<Newline />
+				{props.results.map((r) => (
+					<SubResults key={r._id.toString()} result={r} />
 				))}
-			</>
+			</Text>
 		</Box>
 	);
 };

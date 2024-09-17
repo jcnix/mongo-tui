@@ -11,9 +11,16 @@ const main = async () => {
 	db.createCollection('test');
 
 	await db.collection('test').insertOne({
-		a: 1
-	})
-
+		a: 1,
+	});
+	await db.collection('test').insertOne({
+		b: 2,
+		c: 'test',
+		d: {
+			e: 3,
+			f: 'foo',
+		},
+	});
 
 	const cursor = db.collection('test').find({ a: 1 });
 	const results = await cursor.toArray();
@@ -21,9 +28,7 @@ const main = async () => {
 
 	await client.close();
 
-
 	return;
-}
+};
 
 main();
-
