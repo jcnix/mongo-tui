@@ -3,7 +3,7 @@ import { MongoContext } from './mongo-provider.js';
 import TextInput from 'ink-text-input';
 import { Document, FindCursor, WithId } from 'mongodb';
 import vm from 'node:vm';
-import { useFocus } from 'ink';
+import { Box, useFocus } from 'ink';
 
 export const CommandInput = (props: {
 	setResults: (results: WithId<Document>[]) => void;
@@ -27,11 +27,13 @@ export const CommandInput = (props: {
 	};
 
 	return (
-		<TextInput
-			focus={isFocused}
-			value={command}
-			onChange={setCommand}
-			onSubmit={onSubmit}
-		/>
+		<Box borderStyle="single" borderColor={isFocused ? 'green' : undefined}>
+			<TextInput
+				focus={isFocused}
+				value={command}
+				onChange={setCommand}
+				onSubmit={onSubmit}
+			/>
+		</Box>
 	);
 };

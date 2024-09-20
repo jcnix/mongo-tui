@@ -7,8 +7,12 @@ export const Results = (props: { results: WithId<Document>[] }) => {
 	const { isFocused } = useFocus();
 
 	return (
-		<Box flexDirection="column">
-			<Text>{isFocused ? 'Focused' : 'Results'}</Text>
+		<Box
+			flexDirection="column"
+			borderStyle="single"
+			borderColor={isFocused ? 'green' : undefined}
+		>
+			<Text>{'Results'}</Text>
 			{props.results.map((r) => (
 				<SubResults key={r._id.toString()} result={r} />
 			))}
