@@ -10,7 +10,9 @@ export const CommandInput = (props: {
 }) => {
 	const db = useContext(MongoContext);
 	const [command, setCommand] = useState("db.collection('test').find({a:1})");
-	const { isFocused } = useFocus();
+	const { isFocused } = useFocus({
+		autoFocus: true,
+	});
 
 	const onSubmit = async () => {
 		const context = vm.createContext({
