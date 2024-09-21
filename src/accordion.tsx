@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Text, useFocus, useInput } from 'ink';
+import { Box, Text, useFocus, useFocusManager, useInput } from 'ink';
 import { ReactElement } from 'react';
 
 export const Accordion = (props: {
@@ -9,12 +9,34 @@ export const Accordion = (props: {
 }) => {
 	const [isOpen, setOpen] = useState(props.isOpen);
 	const { isFocused } = useFocus();
+	const { focusNext, focusPrevious } = useFocusManager();
 
-	useInput((_, key) => {
-		if (isFocused && key.return) {
-			setOpen(!isOpen);
-		}
-	});
+	useInput(
+		(input, key) => {
+			if (key.return) {
+				setOpen(!isOpen);
+			}
+
+			if (key.leftArrow || input === 'h') {
+				setOpen(false);
+			}
+
+			if (key.rightArrow || input === 'l') {
+				setOpen(true);
+			}
+
+			if (key.downArrow || input === 'j') {
+				focusNext();
+			}
+
+			if (key.upArrow || input === 'k') {
+				focusPrevious();
+			}
+		},
+		{
+			isActive: isFocused,
+		},
+	);
 
 	return (
 		<Box>

@@ -9,7 +9,7 @@ export const CommandInput = (props: {
 	setResults: (results: WithId<Document>[]) => void;
 }) => {
 	const db = useContext(MongoContext);
-	const [command, setCommand] = useState("db.collection('test').find({a:1})");
+	const [command, setCommand] = useState("db.collection('test').find()");
 	const { isFocused } = useFocus({
 		autoFocus: true,
 	});
