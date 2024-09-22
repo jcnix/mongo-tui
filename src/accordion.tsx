@@ -39,10 +39,12 @@ export const Accordion = (props: {
 	);
 
 	return (
-		<Box>
-			<Text>{isFocused ? '> ' : ''}</Text>
-			<Text>{isOpen ? '[-]' : '[+]'}</Text>
-			<Text>{props.header}</Text>
+		<Box flexDirection="column">
+			<Box flexDirection="row">
+				<Text>{isFocused ? '> ' : ''}</Text>
+				<Text>{isOpen ? '[-]' : '[+]'}</Text>
+				<Text>{props.header}</Text>
+			</Box>
 			{isOpen ? props.children : null}
 		</Box>
 	);

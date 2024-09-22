@@ -17,6 +17,7 @@
 	],
 	"dependencies": {
 		"@reduxjs/toolkit": "^2.2.7",
+		"figures": "^6.1.0",
 		"ink": "^5.0.1",
 		"ink-select-input": "^6.0.0",
 		"ink-text-input": "^6.0.0",
