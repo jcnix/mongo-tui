@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Text, useFocus, useFocusManager, useInput } from 'ink';
 import { ReactElement } from 'react';
+import figures from 'figures';
 
 export const Accordion = (props: {
 	isOpen?: boolean;
@@ -41,7 +42,7 @@ export const Accordion = (props: {
 	return (
 		<Box flexDirection="column">
 			<Box flexDirection="row">
-				<Text>{isFocused ? '> ' : ''}</Text>
+				<Text color={'green'}>{isFocused ? `${figures.pointer} ` : ''}</Text>
 				<Text>{isOpen ? '[-]' : '[+]'}</Text>
 				<Text>{props.header}</Text>
 			</Box>
