@@ -46,7 +46,9 @@ func createTree(t *tree.Tree, data map[string]interface{}) *tree.Tree {
 		case string:
 			t.Child(fmt.Sprintf("%s: %v (%T)", k, data[k], data[k]))
 		case []interface{}:
-			t.Child(fmt.Sprintf("%s: %v (%T)", k, data[k], data[k]))
+			for j := range data[k].([]interface{}) {
+				t.Child(fmt.Sprintf("%s: %v (%T)", k, j, j))
+			}
 		default:
 			if data[k] != nil {
 				subtree := tree.New().Root("objectValue")
