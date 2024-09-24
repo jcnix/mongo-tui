@@ -5,7 +5,7 @@ import figures from 'figures';
 export const Row = (props: {
 	keyEl: React.ReactElement;
 	children: React.ReactElement | null;
-	inputCallback?: (input: string, key: Key) => void;
+	onInput?: (input: string, key: Key) => void;
 }) => {
 	const { isFocused } = useFocus();
 	const { focusNext, focusPrevious } = useFocusManager();
@@ -20,8 +20,8 @@ export const Row = (props: {
 				focusPrevious();
 			}
 
-			if (props.inputCallback) {
-				props.inputCallback(input, key);
+			if (props.onInput) {
+				props.onInput(input, key);
 			}
 		},
 		{

@@ -34,7 +34,7 @@ export const Accordion = (props: {
 
 	return (
 		<Box flexDirection="column">
-			<Row keyEl={key} inputCallback={onInput}>
+			<Row keyEl={key} onInput={onInput}>
 				{value}
 			</Row>
 		</Box>

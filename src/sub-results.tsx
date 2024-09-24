@@ -26,9 +26,7 @@ const toDisplay = (k: string, v: any) => {
 		return (
 			<Box paddingLeft={2}>
 				<Accordion header={k}>
-					<>
-						<SubResults result={v} />
-					</>
+					<SubResults result={v} />
 				</Accordion>
 			</Box>
 		);
