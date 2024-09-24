@@ -12,6 +12,7 @@ export const CommandInput = (props: {
 	const [command, setCommand] = useState("db.collection('test').find()");
 	const { isFocused } = useFocus({
 		autoFocus: true,
+		id: 'command-input',
 	});
 
 	const onSubmit = async () => {
