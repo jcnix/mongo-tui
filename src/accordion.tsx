@@ -1,52 +1,42 @@
 import React, { useState } from 'react';
-import { Box, Text, useFocus, useFocusManager, useInput } from 'ink';
-import { ReactElement } from 'react';
-import figures from 'figures';
+import { Box, Key, Text } from 'ink';
+import { Row } from './row.js';
 
 export const Accordion = (props: {
 	isOpen?: boolean;
 	header: string;
-	children: ReactElement;
+	children: React.ReactElement;
 }) => {
 	const [isOpen, setOpen] = useState(props.isOpen);
-	const { isFocused } = useFocus();
-	const { focusNext, focusPrevious } = useFocusManager();
 
-	useInput(
-		(input, key) => {
-			if (key.return) {
-				setOpen(!isOpen);
-			}
+	const onInput = (input: string, key: Key) => {
+		if (key.return) {
+			setOpen(!isOpen);
+		}
 
-			if (key.leftArrow || input === 'h') {
-				setOpen(false);
-			}
+		if (key.leftArrow || input === 'h') {
+			setOpen(false);
+		}
 
-			if (key.rightArrow || input === 'l') {
-				setOpen(true);
-			}
+		if (key.rightArrow || input === 'l') {
+			setOpen(true);
+		}
+	};
 
-			if (key.downArrow || input === 'j') {
-				focusNext();
-			}
-
-			if (key.upArrow || input === 'k') {
-				focusPrevious();
-			}
-		},
-		{
-			isActive: isFocused,
-		},
+	const key = (
+		<>
+			<Text>{isOpen ? '[-]' : '[+]'}</Text>
+			<Text>{props.header}</Text>
+		</>
 	);
+
+	const value = isOpen ? props.children : null;
 
 	return (
 		<Box flexDirection="column">
-			<Box flexDirection="row">
-				<Text color={'green'}>{isFocused ? `${figures.pointer} ` : ''}</Text>
-				<Text>{isOpen ? '[-]' : '[+]'}</Text>
-				<Text>{props.header}</Text>
-			</Box>
-			{isOpen ? props.children : null}
+			<Row keyEl={key} inputCallback={onInput}>
+				{value}
+			</Row>
 		</Box>
 	);
 };

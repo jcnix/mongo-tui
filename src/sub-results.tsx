@@ -3,20 +3,23 @@ import { Box, Text } from 'ink';
 import { ObjectId } from 'mongodb';
 import { Accordion } from './accordion.js';
 import figures from 'figures';
+import { Row } from './row.js';
 
 const toDisplay = (k: string, v: any) => {
 	if (v instanceof ObjectId) {
 		return (
 			<Box paddingLeft={2}>
-				<Text>{`${figures.lineUpRight} ${k}: `}</Text>
-				<Text>{v.toString()}</Text>
+				<Row keyEl={<Text>{`${figures.lineUpRight} ${k}: `}</Text>}>
+					<Text>{v.toString()}</Text>
+				</Row>
 			</Box>
 		);
 	} else if (typeof v !== 'object') {
 		return (
 			<Box paddingLeft={2}>
-				<Text>{`${figures.lineUpRight} ${k}: `}</Text>
-				<Text>{v}</Text>
+				<Row keyEl={<Text>{`${figures.lineUpRight} ${k}: `}</Text>}>
+					<Text>{v}</Text>
+				</Row>
 			</Box>
 		);
 	} else {
